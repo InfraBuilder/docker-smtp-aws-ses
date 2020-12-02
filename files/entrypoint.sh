@@ -4,10 +4,10 @@ set -e # exit on error
 
 # Recipient restriction
 
-	RECIPIENT_RESTRICTIONS="static:OK"
+	SMTPD_RECIPIENT_RESTRICTIONS="static:OK"
 
 	if [ -n "$RECIPIENT_RESTRICTIONS" ]; then
-		RECIPIENT_RESTRICTIONS="inline:{$(echo $RECIPIENT_RESTRICTIONS | sed 's/\s\+/=OK, /g')=OK}"
+		SMTPD_RECIPIENT_RESTRICTIONS="inline:{$(echo $RECIPIENT_RESTRICTIONS | sed 's/\s\+/=OK, /g')=OK}"
 	fi
 
 # Relay SASL authentication
@@ -42,7 +42,7 @@ set -e # exit on error
 	smtp_use_tls = ${USE_TLS}
 
 	# Disable "RCPT TO" restrictions
-	smtpd_recipient_restrictions = ${RECIPIENT_RESTRICTIONS}, reject
+	smtpd_recipient_restrictions = ${SMTPD_RECIPIENT_RESTRICTIONS}, reject
 
 	# Some tweaks
 	biff = no
