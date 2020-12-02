@@ -34,9 +34,9 @@ spec:
         name: smtp-aws-ses
         envFrom:
         - configMapRef:
-            name: special-config
+            name: smtp-aws-ses
         - secretRef:
-            name: special-config
+            name: smtp-aws-ses
         ports:
         - containerPort: 25
         resources: {}
