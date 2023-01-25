@@ -21,9 +21,8 @@ set -e # exit on error
 		RELAY_AUTH_PASSWORD_MAPS="static:${RELAY_LOGIN}:${RELAY_PASSWORD}"
 	fi
 
-# generating map of /etc/postfix/recipient_checks
+# generating map of /etc/postfix/recipient_checks if it does not exist
 [ ! -e /etc/postfix/recipient_checks ] && touch /etc/postfix/recipient_checks
-postmap /etc/postfix/recipient_checks || { echo "Error found in /etc/postfix/recipient_checks, aborting ..." && exit 1; }
 
 # generating postfix config
 	cat > /etc/postfix/main.cf <<-EOF
