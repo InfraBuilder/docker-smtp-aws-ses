@@ -6,6 +6,7 @@ RUN apk --no-cache add \
     cyrus-sasl-login \
     libintl \
     postfix \
+    postfix-pcre \
     rsyslog \
     supervisor \
     tzdata

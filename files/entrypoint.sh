@@ -21,6 +21,10 @@ set -e # exit on error
 		RELAY_AUTH_PASSWORD_MAPS="static:${RELAY_LOGIN}:${RELAY_PASSWORD}"
 	fi
 
+# generating map of /etc/postfix/recipient_checks
+[ ! -e /etc/postfix/recipient_checks ] && touch /etc/postfix/recipient_checks
+postmap /etc/postfix/recipient_checks || { echo "Error found in /etc/postfix/recipient_checks, aborting ..." && exit 1; }
+
 # generating postfix config
 	cat > /etc/postfix/main.cf <<-EOF
 	# This is main.cf postfix file, for more details on configuration
@@ -42,7 +46,7 @@ set -e # exit on error
 	smtp_use_tls = ${USE_TLS}
 
 	# Disable "RCPT TO" restrictions
-	smtpd_recipient_restrictions = ${SMTPD_RECIPIENT_RESTRICTIONS}, reject
+	smtpd_recipient_restrictions = check_recipient_access pcre:/etc/postfix/recipient_checks, ${SMTPD_RECIPIENT_RESTRICTIONS}, reject
 
 	# Some tweaks
 	biff = no

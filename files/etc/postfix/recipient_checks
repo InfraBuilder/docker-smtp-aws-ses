@@ -1,0 +1,2 @@
+# This is an example that reject emails of domain "example.com"
+# /\@example\.com$/ REJECT
