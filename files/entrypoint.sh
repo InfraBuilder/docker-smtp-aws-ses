@@ -45,7 +45,7 @@ set -e # exit on error
 	smtp_use_tls = ${USE_TLS}
 
 	# Disable "RCPT TO" restrictions
-	smtpd_recipient_restrictions = check_recipient_access pcre:/etc/postfix/recipient_checks, ${SMTPD_RECIPIENT_RESTRICTIONS}, reject
+	smtpd_recipient_restrictions = check_recipient_access hash:/etc/postfix/recipient_checks, ${SMTPD_RECIPIENT_RESTRICTIONS}, reject
 
 	# Some tweaks
 	biff = no
