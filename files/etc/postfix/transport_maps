@@ -1,0 +1,14 @@
+
+# Example that relay mail to sample.com domain on specific relay
+# /@sample\.com/ relay:[smtp.relayhost.com]:587
+
+# Example that discard mail sent to domain example.com
+# /@example\.com/ discard:
+
+
+# ===============================================
+# You should not modify anything under this line 
+# ===============================================
+
+# Default behavior 
+/.*/ :
