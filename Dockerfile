@@ -1,11 +1,10 @@
-FROM alpine:3
+FROM alpine:3.12
 
 RUN apk --no-cache add \
     ca-certificates \
-    cyrus-sasl \
+    cyrus-sasl-plain \
     cyrus-sasl-login \
     libintl \
-    libtree \
     postfix \
     postfix-pcre \
     rsyslog \
