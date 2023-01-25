@@ -2,8 +2,10 @@ FROM alpine:3
 
 RUN apk --no-cache add \
     ca-certificates \
-    cyrus-sasl-plain \
+    cyrus-sasl \
     cyrus-sasl-login \
+    cyrus-sasl-digestmd5 \
+    cyrus-sasl-static \
     libintl \
     postfix \
     postfix-pcre \
